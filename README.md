@@ -15,7 +15,7 @@ npm add @acab/tabs
    announcer.setup();
    ```
 
-2. Announce notifications from anywhere on the page, in an [asertive](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live#assertive) or [polite](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live#polite) way.
+2. Announce notifications from anywhere on the page, in an [assertive](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live#assertive) or [polite](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live#polite) way.
 
    ```js
    announcer.notify('Something happened, must be very important!');
@@ -41,7 +41,7 @@ In some cases, you might want to inject it somewhere else, for example, into a m
 import { LiveAnnouncer } from '@acab/live-announcer';
 
 const announcer = new LiveAnnouncer();
-annoucner.setup({ target: document.querySelector('dialog') });
+announcer.setup({ target: document.querySelector('dialog') });
 
 announcer.notify('Something happened inside the dialog!');
 ```
