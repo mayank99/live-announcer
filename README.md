@@ -18,11 +18,11 @@ npm add @acab/tabs
 2. Announce notifications from anywhere on the page, in an [assertive](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live#assertive) or [polite](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live#polite) way.
 
    ```js
-   announcer.notify('Something happened, must be very important!');
+   announcer.notify('Something happened!', { priority: 'important' });
    ```
 
    ```js
-   announcer.notify('Something happened, but it can wait.', { polite: true });
+   announcer.notify('Something happened, but it can wait.');
    ```
 
 ### Best practices
