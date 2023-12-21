@@ -41,9 +41,8 @@ class LiveAnnouncer extends HTMLElement {
 		target?.appendChild(this);
 	}
 
-	notify(text, { polite = false } = {}) {
-		const region = polite ? this.#politeRegion : this.#assertiveRegion;
-		region.textContent = '';
+	notify(text, { priority = 'none' } = {}) {
+		const region = priority === 'important' ? this.#assertiveRegion : this.#politeRegion;
 		region.textContent = text;
 		setTimeout(() => {
 			region.textContent = '';
