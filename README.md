@@ -3,7 +3,7 @@
 A web component that makes it easier to work with [live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
 
 ```
-npm add @acab/tabs
+npm add @acab/live-announcer
 ```
 
 ## Usage
