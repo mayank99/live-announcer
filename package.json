@@ -1,0 +1,19 @@
+{
+	"name": "@acab/live-announcer",
+	"type": "module",
+	"version": "0.1.0",
+	"exports": {
+		".": "./index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mayank99/live-announcer.git"
+	},
+	"author": "Mayank",
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"main": "index.js",
+	"types": "index.d.ts"
+}
