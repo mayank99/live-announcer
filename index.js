@@ -1,14 +1,25 @@
+const visuallyHiddenCss = `\
+	:host {
+		clip-path: inset(50%) !important;
+		height: 1px !important;
+		overflow: hidden !important;
+		position: absolute !important;
+		white-space: nowrap !important;
+		width: 1px !important;
+		user-select: none !important;
+	}
+`;
+
 class LiveAnnouncer extends HTMLElement {
 	#assertiveRegion;
 	#politeRegion;
 
-	static {
+	static register(tagName = 'live-announcer', registry) {
 		if (typeof window !== 'undefined') {
-			let tagName = 'live-announcer';
-			while (customElements.get(tagName) != undefined) {
-				tagName += '-';
+			registry ||= customElements;
+			if (registry.get(tagName) == undefined) {
+				registry.define(tagName, LiveAnnouncer);
 			}
-			customElements.define(tagName, LiveAnnouncer);
 		}
 	}
 
@@ -23,17 +34,7 @@ class LiveAnnouncer extends HTMLElement {
 		this.shadowRoot?.replaceChildren(this.#assertiveRegion, this.#politeRegion);
 
 		const stylesheet = new CSSStyleSheet();
-		stylesheet.replaceSync(`\
-			:host {
-				clip-path: inset(50%) !important;
-				height: 1px !important;
-				overflow: hidden !important;
-				position: absolute !important;
-				white-space: nowrap !important;
-				width: 1px !important;
-				user-select: none !important;
-			}
-		`);
+		stylesheet.replaceSync(visuallyHiddenCss);
 		this.shadowRoot?.adoptedStyleSheets.push(stylesheet);
 	}
 
@@ -53,6 +54,7 @@ class LiveAnnouncer extends HTMLElement {
 let _announcer;
 
 function setup() {
+	LiveAnnouncer.register();
 	if (!document.body.shadowRoot) {
 		const shadow = document.body.attachShadow({ mode: 'open' });
 		shadow.appendChild(document.createElement('slot'));
